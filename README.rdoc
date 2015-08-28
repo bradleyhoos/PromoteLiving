@@ -1,0 +1,26 @@
+== README
+Woohooo Matt Bobzien has started building PromoteLiving. I don't know enough
+about Ruby yet to fill in the blanks, but I will be coming back here periodically.
+5/17/2015
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

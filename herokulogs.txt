@@ -1,0 +1,101 @@
+2015-05-21T19:16:56.992303+00:00 app[web.1]: 	bin/rails:4:in `<main>'
+2015-05-21T19:16:56.992396+00:00 app[web.1]: [2015-05-21 19:16:56] INFO  going to shutdown ...
+2015-05-21T19:16:56.992497+00:00 app[web.1]: [2015-05-21 19:16:56] INFO  WEBrick::HTTPServer#start done.
+2015-05-21T19:16:56.992576+00:00 app[web.1]: Exiting
+2015-05-21T19:16:58.274169+00:00 heroku[web.1]: Process exited with status 143
+2015-05-25T01:42:45.587168+00:00 heroku[web.1]: Unidling
+2015-05-25T01:42:45.587443+00:00 heroku[web.1]: State changed from down to starting
+2015-05-25T01:42:49.136404+00:00 heroku[web.1]: Starting process with command `bin/rails server -p 20229 -e production`
+2015-05-25T01:42:54.852853+00:00 heroku[web.1]: State changed from starting to up
+2015-05-25T01:42:54.710380+00:00 app[web.1]: [2015-05-25 01:42:54] INFO  WEBrick 1.3.1
+2015-05-25T01:42:54.710412+00:00 app[web.1]: [2015-05-25 01:42:54] INFO  ruby 2.0.0 (2015-04-13) [x86_64-linux]
+2015-05-25T01:42:54.710740+00:00 app[web.1]: [2015-05-25 01:42:54] INFO  WEBrick::HTTPServer#start: pid=3 port=20229
+2015-05-25T01:42:55.859583+00:00 heroku[router]: at=info method=GET path="/" host=mighty-tor-9744.herokuapp.com request_id=6f134532-31f2-41ad-867c-42c1b51e8afc fwd="70.194.40.220" dyno=web.1 connect=1ms service=154ms status=302 bytes=1011
+2015-05-25T01:42:55.706700+00:00 app[web.1]: => Booting WEBrick
+2015-05-25T01:42:55.706707+00:00 app[web.1]: => Run `rails server -h` for more startup options
+2015-05-25T01:42:55.706708+00:00 app[web.1]: => Ctrl-C to shutdown server
+2015-05-25T01:42:55.706705+00:00 app[web.1]: => Rails 4.2.1 application starting in production on http://0.0.0.0:20229
+2015-05-25T01:42:55.829610+00:00 app[web.1]: Processing by HomeController#index as HTML
+2015-05-25T01:42:55.706710+00:00 app[web.1]: Started GET "/" for 70.194.40.220 at 2015-05-25 01:42:55 +0000
+2015-05-25T01:42:55.842758+00:00 app[web.1]: Completed 401 Unauthorized in 13ms (ActiveRecord: 0.0ms)
+2015-05-25T01:42:56.379840+00:00 app[web.1]: Processing by Users::SessionsController#new as HTML
+2015-05-25T01:42:56.530819+00:00 app[web.1]:     11: <%= render 'layouts/header' %>
+2015-05-25T01:42:56.530802+00:00 app[web.1]: ActionView::Template::Error (Missing partial layouts/_ie9shim with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+2015-05-25T01:42:56.530804+00:00 app[web.1]:   * "/app/app/views"
+2015-05-25T01:42:56.530807+00:00 app[web.1]: ):
+2015-05-25T01:42:56.530806+00:00 app[web.1]:   * "/app/vendor/bundle/ruby/2.0.0/gems/devise-3.4.1/app/views"
+2015-05-25T01:42:56.530799+00:00 app[web.1]: 
+2015-05-25T01:42:56.530809+00:00 app[web.1]:      5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+2015-05-25T01:42:56.530811+00:00 app[web.1]:      6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+2015-05-25T01:42:56.530814+00:00 app[web.1]:      8:   <%= render 'layouts/ie9shim' %>
+2015-05-25T01:42:56.530817+00:00 app[web.1]:     10: <body>   
+2015-05-25T01:42:56.530812+00:00 app[web.1]:      7:   <%= csrf_meta_tags %>
+2015-05-25T01:42:56.530816+00:00 app[web.1]:      9: </head>
+2015-05-25T01:42:56.530821+00:00 app[web.1]:   app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___3788715788615113331_69908336979460'
+2015-05-25T01:42:56.530822+00:00 app[web.1]: 
+2015-05-25T01:42:56.530823+00:00 app[web.1]: 
+2015-05-25T01:42:56.376593+00:00 app[web.1]: Started GET "/users/sign_in" for 70.194.40.220 at 2015-05-25 01:42:56 +0000
+2015-05-25T01:42:56.526459+00:00 app[web.1]:   Rendered devise/shared/_links.html.erb (2.2ms)
+2015-05-25T01:42:56.529314+00:00 app[web.1]: Completed 500 Internal Server Error in 149ms (ActiveRecord: 52.7ms)
+2015-05-25T01:42:56.526525+00:00 app[web.1]:   Rendered users/sessions/new.html.erb within layouts/application (8.8ms)
+2015-05-25T01:42:56.536717+00:00 heroku[router]: at=info method=GET path="/users/sign_in" host=mighty-tor-9744.herokuapp.com request_id=e05646c0-95fe-404a-b62d-3dcef61230d4 fwd="70.194.40.220" dyno=web.1 connect=8ms service=159ms status=500 bytes=1754
+2015-05-25T01:42:56.818041+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=mighty-tor-9744.herokuapp.com request_id=b3079f48-1e7a-43e5-a887-4fc635c05064 fwd="70.194.40.220" dyno=web.1 connect=16ms service=5ms status=304 bytes=133
+2015-05-25T02:46:40.320860+00:00 heroku[web.1]: Idling
+2015-05-25T02:46:40.321466+00:00 heroku[web.1]: State changed from up to down
+2015-05-25T02:46:42.868857+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2015-05-25T02:46:43.559955+00:00 app[web.1]: [2015-05-25 02:46:43] FATAL SignalException: SIGTERM
+2015-05-25T02:46:43.559960+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:170:in `select'
+2015-05-25T02:46:43.559963+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:170:in `block in start'
+2015-05-25T02:46:43.559966+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:160:in `start'
+2015-05-25T02:46:43.559967+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/rack-1.6.1/lib/rack/handler/webrick.rb:35:in `run'
+2015-05-25T02:46:43.559964+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:32:in `start'
+2015-05-25T02:46:43.559969+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/rack-1.6.1/lib/rack/server.rb:286:in `start'
+2015-05-25T02:46:43.559970+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.2.1/lib/rails/commands/server.rb:80:in `start'
+2015-05-25T02:46:43.559972+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.2.1/lib/rails/commands/commands_tasks.rb:80:in `block in server'
+2015-05-25T02:46:43.559974+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.2.1/lib/rails/commands/commands_tasks.rb:75:in `tap'
+2015-05-25T02:46:43.559975+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.2.1/lib/rails/commands/commands_tasks.rb:75:in `server'
+2015-05-25T02:46:43.559978+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.2.1/lib/rails/commands.rb:17:in `<top (required)>'
+2015-05-25T02:46:43.559976+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.2.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+2015-05-25T02:46:43.559980+00:00 app[web.1]: 	bin/rails:4:in `require'
+2015-05-25T02:46:43.559981+00:00 app[web.1]: 	bin/rails:4:in `<main>'
+2015-05-25T02:46:43.559987+00:00 app[web.1]: [2015-05-25 02:46:43] INFO  going to shutdown ...
+2015-05-25T02:46:43.560044+00:00 app[web.1]: Exiting
+2015-05-25T02:46:43.560020+00:00 app[web.1]: [2015-05-25 02:46:43] INFO  WEBrick::HTTPServer#start done.
+2015-05-25T02:46:44.520212+00:00 heroku[web.1]: Process exited with status 143
+2015-05-25T23:36:15.749586+00:00 heroku[web.1]: Unidling
+2015-05-25T23:36:15.750067+00:00 heroku[web.1]: State changed from down to starting
+2015-05-25T23:36:19.897485+00:00 heroku[web.1]: Starting process with command `bin/rails server -p 33192 -e production`
+2015-05-25T23:36:24.891630+00:00 app[web.1]: [2015-05-25 23:36:24] INFO  WEBrick 1.3.1
+2015-05-25T23:36:24.891730+00:00 app[web.1]: [2015-05-25 23:36:24] INFO  ruby 2.0.0 (2015-04-13) [x86_64-linux]
+2015-05-25T23:36:24.892294+00:00 app[web.1]: [2015-05-25 23:36:24] INFO  WEBrick::HTTPServer#start: pid=3 port=33192
+2015-05-25T23:36:25.118252+00:00 heroku[web.1]: State changed from starting to up
+2015-05-25T23:36:25.971744+00:00 heroku[router]: at=info method=GET path="/" host=mighty-tor-9744.herokuapp.com request_id=fb5c47e4-009e-413d-96f3-890002846c75 fwd="69.244.185.18" dyno=web.1 connect=0ms service=156ms status=302 bytes=1011
+2015-05-25T23:36:25.818102+00:00 app[web.1]: => Booting WEBrick
+2015-05-25T23:36:25.818107+00:00 app[web.1]: => Rails 4.2.1 application starting in production on http://0.0.0.0:33192
+2015-05-25T23:36:25.818109+00:00 app[web.1]: => Run `rails server -h` for more startup options
+2015-05-25T23:36:25.818110+00:00 app[web.1]: => Ctrl-C to shutdown server
+2015-05-25T23:36:25.941597+00:00 app[web.1]: Processing by HomeController#index as HTML
+2015-05-25T23:36:25.818112+00:00 app[web.1]: Started GET "/" for 69.244.185.18 at 2015-05-25 23:36:25 +0000
+2015-05-25T23:36:25.955036+00:00 app[web.1]: Completed 401 Unauthorized in 13ms (ActiveRecord: 0.0ms)
+2015-05-25T23:36:26.138238+00:00 app[web.1]: Started GET "/users/sign_in" for 69.244.185.18 at 2015-05-25 23:36:26 +0000
+2015-05-25T23:36:26.141329+00:00 app[web.1]: Processing by Users::SessionsController#new as HTML
+2015-05-25T23:36:26.299799+00:00 app[web.1]:   Rendered devise/shared/_links.html.erb (2.2ms)
+2015-05-25T23:36:26.299880+00:00 app[web.1]:   Rendered users/sessions/new.html.erb within layouts/application (8.7ms)
+2015-05-25T23:36:26.302651+00:00 app[web.1]: Completed 500 Internal Server Error in 161ms (ActiveRecord: 61.1ms)
+2015-05-25T23:36:26.309535+00:00 heroku[router]: at=info method=GET path="/users/sign_in" host=mighty-tor-9744.herokuapp.com request_id=f754b8db-da9a-48f4-83d8-dc39a17ad420 fwd="69.244.185.18" dyno=web.1 connect=0ms service=170ms status=500 bytes=1754
+2015-05-25T23:36:26.304135+00:00 app[web.1]: 
+2015-05-25T23:36:26.304140+00:00 app[web.1]:   * "/app/app/views"
+2015-05-25T23:36:26.304145+00:00 app[web.1]:      5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+2015-05-25T23:36:26.304142+00:00 app[web.1]:   * "/app/vendor/bundle/ruby/2.0.0/gems/devise-3.4.1/app/views"
+2015-05-25T23:36:26.304139+00:00 app[web.1]: ActionView::Template::Error (Missing partial layouts/_ie9shim with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+2015-05-25T23:36:26.304143+00:00 app[web.1]: ):
+2015-05-25T23:36:26.304147+00:00 app[web.1]:      6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+2015-05-25T23:36:26.304228+00:00 app[web.1]:     11: <%= render 'layouts/header' %>
+2015-05-25T23:36:26.304216+00:00 app[web.1]:     10: <body>   
+2015-05-25T23:36:26.304215+00:00 app[web.1]:      9: </head>
+2015-05-25T23:36:26.304148+00:00 app[web.1]:      7:   <%= csrf_meta_tags %>
+2015-05-25T23:36:26.304231+00:00 app[web.1]: 
+2015-05-25T23:36:26.304211+00:00 app[web.1]:      8:   <%= render 'layouts/ie9shim' %>
+2015-05-25T23:36:26.304232+00:00 app[web.1]: 
+2015-05-25T23:36:26.304229+00:00 app[web.1]:   app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__389883110034383240_70151341565560'
+2015-05-25T23:36:26.490927+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=mighty-tor-9744.herokuapp.com request_id=7ed4c1be-60a7-44fc-a190-15e139bfbb98 fwd="69.244.185.18" dyno=web.1 connect=0ms service=10ms status=304 bytes=133
