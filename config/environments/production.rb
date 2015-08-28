@@ -1,9 +1,5 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-  
-
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -26,7 +22,7 @@ Rails.application.configure do
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   #config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
-config.serve_static_assets = true
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -40,7 +36,7 @@ config.serve_static_assets = true
   config.assets.digest = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
-config.assets.initialize_on_precompile = false
+  config.assets.initialize_on_precompile = false
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
@@ -76,19 +72,19 @@ config.assets.initialize_on_precompile = false
   config.active_support.deprecation = :notify
 
   # Disable delivery errors, bad email addresses will be ignored
-	config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'mighty-tor-9744.herokuapp.com/'}
-config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "gmail.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "mbobzien@gmail.com",
-    password: "MayThird:*"
-	
-}
-  
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "gmail.com",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: "mbobzien@gmail.com",
+      password: "MayThird:*"
+
+  }
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
