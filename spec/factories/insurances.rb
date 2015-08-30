@@ -17,20 +17,18 @@
 #  index_insurances_on_user_id  (user_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'factory_girl'
 
-one:
-  first_name: MyString
-  last_name: MyString
-  enrolee_id: MyString
-  group_number: MyString
-  insurer_id: 1
-  user_id: 1
+FactoryGirl.define do
+  factory :insurance do
+    first_name 'John'
+    last_name 'Doe'
+    enrolee_id SecureRandom.hex(1)
+    group_number SecureRandom.hex(1)
+    insurer_id SecureRandom.hex(1)
 
-two:
-  first_name: MyString
-  last_name: MyString
-  enrolee_id: MyString
-  group_number: MyString
-  insurer_id: 1
-  user_id: 1
+    factory :insurance_with_user do
+      user
+    end
+  end
+end

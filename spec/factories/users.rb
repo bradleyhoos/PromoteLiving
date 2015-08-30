@@ -29,14 +29,12 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'factory_girl'
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-# two: {}
-#  column: value
+FactoryGirl.define do
+  factory :user do
+    email 'malachai@shortjab.com'
+    password 'butteruppercuts2012'
+    password_confirmation 'butteruppercuts2012'
+  end
+end

@@ -29,10 +29,29 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-require 'test_helper'
+require 'rails_helper'
 
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+RSpec.describe User, type: :model do
+
+  let(:user) { create(:user) }
+  let(:profile) { create(:profile, user_id: user.id) }
+  let(:track) { create(:track, user: user) }
+
+  it { should validate_presence_of(:password) }
+  it { should validate_uniqueness_of(:email) }
+  it { should_not allow_value('blah').for(:email) }
+  it { should allow_value('bigballscaptain@testicles.me').for(:email) }
+
+
+  describe 'valid Model' do
+    it 'should be an instance of User Model' do
+      expect(user).to be_an_instance_of(User)
+    end
+
+    it 'should have a password length btwn 6..40' do
+      expect(user.password.length).to be > 6
+      expect(user.password.length).to be < 40
+    end
+  end
+
 end
