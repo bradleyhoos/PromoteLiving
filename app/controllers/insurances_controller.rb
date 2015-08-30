@@ -2,6 +2,7 @@ class InsurancesController < ApplicationController
   before_action :set_insurance, only: [:show, :edit, :update, :destroy, :index]
 
   def index
+    binding.pry
     render :show
   end
 
@@ -63,6 +64,7 @@ class InsurancesController < ApplicationController
   private
 
     def set_insurance
+      binding.pry
       if user_signed_in?
         @insurance = Insurance.find_by(user_id: current_user.id)
         if (@insurance.nil?)
