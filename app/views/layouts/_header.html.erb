@@ -1,21 +1,11 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "PromoteLiving", '#', id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right" style="float:right">
-        <li><%= link_to "Home", '#' %></li>
-        <li><%= link_to "Promotions", '#' %></li>
-        <li><%= link_to "Log in", '#' %></li>
-      </ul>
-    </nav>
-  </div>
-  <% if user_signed_in? %>
-    <div id="user_login_box" style="float:right">
-      <%= current_user.email %> |
-      <%= link_to 'My info', edit_user_registration_path %> |
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> |
-      <%= link_to 'Add Insurance', insurances_path + '/' + current_user.id.to_s,
-       class: "btn btn-lg btn-primary" %>
+<nav class="<%= controller_name %> navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class='container'>
+    <div class='navbar-header pull-left'>
+      <%= link_to("/", class: 'navbar-brand website-logo', id: 'logo') do %>
+        PromoteLiving
+      <% end %>
     </div>
-  <% end %>
-</header>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <%= render 'layouts/dropdown_menu' %>
+  </div>
+</nav>

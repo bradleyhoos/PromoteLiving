@@ -1,0 +1,59 @@
+<div class="" id="">
+  <ul class="nav navbar-nav pull-right">
+    <li class='nav-email'><%= current_user.email if user_signed_in? %></li>
+    <li class='dropdown'>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        <i class="fa fa-cog fa-lg"></i>
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to(edit_user_registration_path) do %>
+              <i class="fa fa-cogs"></i>
+              <span>My info</span>
+            <% end %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to(destroy_user_session_path, method: :delete) do %>
+              <i class="fa fa-sign-out"></i>
+              Sign Out
+            <% end %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to '#' do %>
+              <%#= link_to 'Add Insurance', insurances_path + '/' + current_user.id.to_s,
+                class: "btn btn-lg btn-primary" %>
+              <i class="fa fa-group"></i>
+              <span>Insurance Providers</span>
+            <% end %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to '#' do %>
+              <i class="fa fa-group"></i>
+              <span>Promotions</span>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <i class="fa fa-sign-in"></i>
+              Sign Up
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path do %>
+              <i class="fa fa-sign-in"></i>
+              Sign In
+            <% end %>
+          </li>
+        <% end %>
+
+      </ul>
+    </li>
+  </ul>
+
+</div>

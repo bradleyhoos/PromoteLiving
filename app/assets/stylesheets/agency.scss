@@ -4,14 +4,11 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-body {
-  padding-top: 60px;
-  overflow-x: hidden;
-  font-family: eurostile ,"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-}
+// body {
+//   padding-top: 60px;
+//   overflow-x: hidden;
+//   font-family: eurostile ,"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+// }
 
 .logo{
 padding-bottom: 20px;
@@ -316,7 +313,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url(../img/healthy_cart.png);
+    // background-image: url(../img/healthy_cart.png);
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
