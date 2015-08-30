@@ -64,7 +64,7 @@ class InsurancesController < ApplicationController
   private
 
     def set_insurance
-      binding.pry
+      # binding.pry
       if user_signed_in?
         @insurance = Insurance.find_by(user_id: current_user.id)
         if (@insurance.nil?)
