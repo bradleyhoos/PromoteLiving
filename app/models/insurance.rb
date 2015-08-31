@@ -6,9 +6,9 @@
 #  user_id      :integer
 #  first_name   :string
 #  last_name    :string
-#  enrolee_id   :string
+#  enrollee_id  :string
 #  group_number :string
-#  insurer_id   :integer
+#  issue_date   :date
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
@@ -21,8 +21,7 @@ class Insurance < ActiveRecord::Base
   belongs_to :user
   validates :first_name, presence: true, length: {maximum: 50, minimum: 2}
   validates :last_name, presence: true, length: {maximum: 100, minimum: 2}
-  # If there is a standard for enrolee_id I'd love to see it, but I don't know what it is.
-  validates :enrolee_id, presence: true, length: {maximum: 20, minimum: 5}
+  validates :enrollee_id, presence: true, length: {maximum: 20, minimum: 5}
   validates :group_number, presence: true, length: {maximum: 20, minimum: 5}
   validates :user_id, uniqueness: true
 end

@@ -9,14 +9,14 @@
       <%= f.label :last_name %>
       <%= f.text_field :last_name %>
 
-      <%= f.label :enrolee_id %>
-      <%= f.text_field :enrolee_id %>
+      <%= f.label :enrollee_id %>
+      <%= f.text_field :enrollee_id %>
 
       <%= f.label :group_number %>
       <%= f.text_field :group_number %>
 
       <%= f.submit "Update my Insurance", class: "btn btn-primary" %>
-      <%= link_to 'Delete Insurance', insurance_path, method: :delete %> |
+      <%= link_to "Delete Insurance", @insurance, method: :delete, data: {confirm: "Are you sure you'd like to delete this Insurance?"} %> |
     <% end %>
   </div>
 

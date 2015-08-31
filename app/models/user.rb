@@ -36,13 +36,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :lockable, :timeoutable
 
- def self.authenticate( password)
-  user = User.find_by_name(name)
+  validates :password, presence: true, on: :create, length: { within: 6..40 }
+  validates :email, presence: true, uniqueness: true,
+            format: {
+              with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+            }
+  has_one :insurance, dependent: :destroy
 
-  #  if user.find_by_password(password)#match_password(password)
-  #    return true
-  #  else
-  #    return false
-  #  end
+  # accepts_nested_attributes_for :insurance_policy
+
+  def insurance_policy
+    Insurance.find_by(user_id: self.id)
   end
+
 end
