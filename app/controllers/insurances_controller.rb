@@ -1,9 +1,14 @@
 class InsurancesController < ApplicationController
-  before_action :set_insurance, only: [:show, :edit, :update, :destroy, :index]
+  before_filter :authenticate_user!
+  before_action :set_insurance, only: [:show, :edit, :update, :destroy]
 
   def index
-    binding.pry
-    render :show
+    if current_user.insurance.present?
+      @insurance = current_user.insurance
+      render :show
+    else
+      render 'home/index'
+    end
   end
 
   def show
@@ -64,7 +69,6 @@ class InsurancesController < ApplicationController
   private
 
     def set_insurance
-      # binding.pry
       if user_signed_in?
         @insurance = Insurance.find_by(user_id: current_user.id)
         if (@insurance.nil?)
@@ -78,7 +82,7 @@ class InsurancesController < ApplicationController
    end
 
     def insurance_params
-      params.require(:insurance).permit(:first_name, :last_name, :enrolee_id,
+      params.require(:insurance).permit(:first_name, :last_name, :enrollee_id,
                                    :group_number, :user_id)
     end
 

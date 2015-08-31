@@ -34,13 +34,15 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   let(:user) { create(:user) }
-  let(:profile) { create(:profile, user_id: user.id) }
-  let(:track) { create(:track, user: user) }
+  let(:insurance_policy) { create(:insurance, user_id: user.id) }
 
+  # it { should validate_presence_of(:first_name) }
+  # it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:password) }
   it { should validate_uniqueness_of(:email) }
   it { should_not allow_value('blah').for(:email) }
   it { should allow_value('bigballscaptain@testicles.me').for(:email) }
+  it { should have_one(:insurance_policy).class_name('Insurance').dependent(:destroy).with_foreign_key('user_id') }
 
 
   describe 'valid Model' do
@@ -52,6 +54,7 @@ RSpec.describe User, type: :model do
       expect(user.password.length).to be > 6
       expect(user.password.length).to be < 40
     end
+
   end
 
 end

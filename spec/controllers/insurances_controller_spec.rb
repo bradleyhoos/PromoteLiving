@@ -7,12 +7,12 @@ RSpec.describe InsurancesController, type: :controller do
     allow(controller).to receive(:current_user) { user }
   end
 
-  before(:each) do
-    setup
-    sign_in user
-  end
-
   context "signed in" do
+    before(:each) do
+      setup
+      sign_in user
+    end
+
     describe "GET 'index'" do
       it 'assigns the requested user as @user' do
         get :index
@@ -25,8 +25,7 @@ RSpec.describe InsurancesController, type: :controller do
     describe "GET 'index'" do
       it 'should redirect_to root_path' do
         get :index
-        # binding.pry
-        expect(response).to be_success#redirect_to(root_path)
+        expect(response).to be_redirect
       end
     end
   end
