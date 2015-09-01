@@ -23,8 +23,8 @@ FactoryGirl.define do
   factory :insurance do
     first_name 'John'
     last_name 'Doe'
-    enrollee_id SecureRandom.hex(1)
-    group_number SecureRandom.hex(1)
+    enrollee_id SecureRandom.hex(8)
+    group_number SecureRandom.hex(8)
 
     factory :insurance_with_user do
       user

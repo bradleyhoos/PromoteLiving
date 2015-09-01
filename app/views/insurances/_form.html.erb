@@ -1,0 +1,38 @@
+<h1>Add your insurance</h1>
+<h2>it should all come from your card </h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for(@insurance, html: {class: "form", multipart: true}) do |f| %>
+      <%= f.error_notification %>
+      <div class="">
+        <div class='form-group'>
+          <%= f.input :first_name, label: "First Name", placeholder: "John", required: true  %>
+        </div>
+
+        <div class='form-group'>
+          <%= f.input :last_name, label: "Last Name", placeholder: "Doe", required: true  %>
+        </div>
+
+        <div class='form-group'>
+          <%= f.input :enrollee_id, label: "Enrollee ID", placeholder: "00000000", required: true %>
+        </div>
+
+        <div class='form-group'>
+          <%= f.input :group_number, label: "Group #", placeholder: "00000000", required: true  %>
+        </div>
+
+        <div class='form-group'>
+          <%= f.input :issue_date, label: "Issue Date", required: false %>
+        </div>
+
+
+        <div class='form-group'>
+          <%= f.submit 'Add my Insurance', class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>

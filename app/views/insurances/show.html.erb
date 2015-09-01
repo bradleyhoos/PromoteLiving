@@ -16,7 +16,7 @@
       <%= f.text_field :group_number %>
 
       <%= f.submit "Update my Insurance", class: "btn btn-primary" %>
-      <%= link_to 'Delete Insurance', insurance_path, method: :delete %> |
+      <%= link_to "Delete Insurance", @insurance, method: :delete, data: {confirm: "Are you sure you'd like to delete this Insurance?"} %> |
     <% end %>
   </div>
 

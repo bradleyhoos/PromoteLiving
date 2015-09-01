@@ -41,7 +41,12 @@ class User < ActiveRecord::Base
             format: {
               with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
             }
-  has_one :insurance_policy, class_name: 'Insurance', dependent: :destroy, foreign_key: 'user_id'
+  has_one :insurance, dependent: :destroy
 
-  accepts_nested_attributes_for :insurance_policy
+  # accepts_nested_attributes_for :insurance_policy
+
+  def insurance_policy
+    Insurance.find_by(user_id: self.id)
+  end
+
 end

@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
   it { should validate_uniqueness_of(:email) }
   it { should_not allow_value('blah').for(:email) }
   it { should allow_value('bigballscaptain@testicles.me').for(:email) }
-  it { should have_one(:insurance_policy).class_name('Insurance').dependent(:destroy).with_foreign_key('user_id') }
+  it { should have_one(:insurance).dependent(:destroy) }
 
 
   describe 'valid Model' do
