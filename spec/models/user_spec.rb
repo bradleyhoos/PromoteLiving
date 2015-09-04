@@ -34,10 +34,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   let(:user) { create(:user) }
-  let(:insurance_policy) { create(:insurance, user_id: user.id) }
+  let(:ins) { create(:insurance, user_id: user.id) }
 
-  # it { should validate_presence_of(:first_name) }
-  # it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:password) }
   it { should validate_uniqueness_of(:email) }
   it { should_not allow_value('blah').for(:email) }
@@ -54,7 +52,18 @@ RSpec.describe User, type: :model do
       expect(user.password.length).to be > 6
       expect(user.password.length).to be < 40
     end
+  end
 
+  describe '#insurance_policy' do
+    it 'should return the users insurance_policy' do
+      ins.reload
+      expect(user.insurance_policy).to eq(ins)
+    end
+
+    it 'should return nil if the there is no policy yet' do
+      user2 = create(:user)
+      expect(user2.insurance_policy).to eq(nil)
+    end
   end
 
 end
