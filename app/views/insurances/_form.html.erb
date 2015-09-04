@@ -1,38 +1,58 @@
-<h1>Add your insurance</h1>
-<h2>it should all come from your card </h2>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<% action_for_button = action_name === "edit" ? "Update my Insurance" : "Submit" %>
+
+<br/>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <% if action_name === "edit" %>
+      <i><%= @insurance.first_name %> <%= @insurance.last_name %></i> (<b><%= @insurance.last_name %></b>)
+      <p class="pull-right"><%= link_to "Back to Insurance", edit_insurance_path(@insurance) %></p>
+    <% else %>
+      <i><b>Add your insurance</b></i>
+    <% end %>
+  </div>
+  <div class="panel panel-body">
     <%= simple_form_for(@insurance, html: {class: "form", multipart: true}) do |f| %>
       <%= f.error_notification %>
       <div class="">
-        <div class='form-group'>
-          <%= f.input :first_name, label: "First Name", placeholder: "John", required: true  %>
+        <div class='form-group col-sm-12'>
+          <%= f.input :first_name, autocomplete: "on", label: "First Name",
+           placeholder: "John", required: true, input_html: {class: "form-control"} %>
         </div>
 
-        <div class='form-group'>
-          <%= f.input :last_name, label: "Last Name", placeholder: "Doe", required: true  %>
+        <div class='form-group col-sm-12'>
+          <%= f.input :last_name, autocomplete: "on", label: "Last Name",
+           placeholder: "Doe", required: true, input_html: {class: "form-control"} %>
         </div>
 
-        <div class='form-group'>
-          <%= f.input :enrollee_id, label: "Enrollee ID", placeholder: "00000000", required: true %>
+        <div class='form-group col-sm-12'>
+          <%= f.input :enrollee_id, autocomplete: "on", label: "Enrollee ID",
+           placeholder: "00000000", required: true, input_html: {class: "form-control"} %>
         </div>
 
-        <div class='form-group'>
-          <%= f.input :group_number, label: "Group #", placeholder: "00000000", required: true  %>
+        <div class='form-group col-sm-12'>
+          <%= f.input :group_number, autocomplete: "on", label: "Group #",
+           placeholder: "00000000", required: true, input_html: {class: "form-control"} %>
         </div>
 
-        <div class='form-group'>
-          <%= f.input :issue_date, label: "Issue Date", required: false %>
+        <div class='form-group col-sm-12'>
+          <%= f.input :issue_date,
+            as: :date,
+            start_year: Date.today.year,
+            end_year: Date.today.year - 90,
+            order: [:month, :day, :year],
+            html5: true,
+            required: false,
+            label: 'Issue Date',
+            input_html: {class: "form-control"}  %>
         </div>
 
-
-        <div class='form-group'>
-          <%= f.submit 'Add my Insurance', class: 'btn btn-primary' %>
+        <div class="form-group col-sm-12">
+          <br/>
+          <%= f.button :submit, action_for_button, class: "btn btn-primary btn-lg btn-block" %>
         </div>
       </div>
-
     <% end %>
-
   </div>
 
 </div>
+
