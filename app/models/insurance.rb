@@ -19,9 +19,15 @@
 
 class Insurance < ActiveRecord::Base
   belongs_to :user
+
   validates :first_name, presence: true, length: {maximum: 50, minimum: 2}
   validates :last_name, presence: true, length: {maximum: 100, minimum: 2}
-  validates :enrollee_id, presence: true, length: {maximum: 20, minimum: 5}
-  validates :group_number, presence: true, length: {maximum: 20, minimum: 5}
-  validates :user_id, uniqueness: true
+  validates :enrollee_id, presence: true, uniqueness: true, length: {maximum: 20, minimum: 5}
+  validates :group_number, presence: true, uniqueness: true, length: {maximum: 20, minimum: 5}
+  validates :user_id, presence: true, uniqueness: true
+
+  def full_name
+    return if first_name.nil? || last_name.nil?
+    first_name + " " + last_name
+  end
 end
