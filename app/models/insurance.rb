@@ -19,6 +19,7 @@
 
 class Insurance < ActiveRecord::Base
   belongs_to :user
+  has_paper_trail versions: :paper_trail_versions
 
   validates :first_name, presence: true, length: {maximum: 50, minimum: 2}
   validates :last_name, presence: true, length: {maximum: 100, minimum: 2}

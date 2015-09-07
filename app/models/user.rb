@@ -30,6 +30,8 @@
 #
 
 class User < ActiveRecord::Base
+  rolify
+  has_paper_trail versions: :paper_trail_versions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
