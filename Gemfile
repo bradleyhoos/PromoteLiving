@@ -16,6 +16,10 @@ gem 'pg',                   '~> 0.18.2'
 gem 'foreman',              '~> 0.78.0'
 gem 'simple_form',          '~> 3.1.0'
 gem 'font-awesome-rails',   '~> 4.4.0.0'
+gem 'cancancan',            '~> 1.12.0'
+gem 'rails_admin',          '~> 0.7.0'
+gem 'paper_trail',          '~> 3.0.8'#'~> 4.0.0'
+gem 'rolify',               '~> 4.1.1'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

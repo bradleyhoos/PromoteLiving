@@ -66,4 +66,12 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'roles' do
+    it 'add_role :admin method should work' do
+      user.add_role :admin
+      expect(user.has_role?(:admin)).to be(true)
+    end
+
+  end
+
 end
