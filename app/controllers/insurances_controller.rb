@@ -1,82 +1,76 @@
 class InsurancesController < ApplicationController
-  before_action :set_insurance, only: [:show, :edit, :update, :destroy, :index]
-def index
-  render :show
-end
+  before_filter :authenticate_user!
+  before_action :set_insurance, only: [:show, :edit, :update, :destroy]
 
-def show
+  def index
+    if current_user.insurance_policy.present?
+      @insurance = current_user.insurance
+      render :show
+    else
+      render 'home/index'
+    end
+  end
 
-end
+  def show
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @insurance }
+    end
+  end
 
-def new
-@insurance = Insurance.new
-end
+  def new
+    @insurance = Insurance.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @insurance }
+    end
+  end
 
-def edit
-#I don't think you really have to do this. MJB
+  def edit
+  end
 
+  def create
+    @insurance = Insurance.new(insurance_params.merge!(user_id: current_user.id))
+    respond_to do |format|
+      if @insurance.save
+        format.html { redirect_to @insurance, notice: 'Your Insurance was successfully added. '}
+        format.json { render json: @insurance, status: :created, location: @insurance }
+      else
+        format.html { render :new }
+        format.json { render json: @insurance.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
     respond_to do |format|
       if @insurance.update(insurance_params)
         format.html { redirect_to @insurance, notice: 'Your Insurance was successfully updated.' }
-        format.json { render :show, status: :ok, location: @insurance }
+        format.json { head :no_content }
       else
         format.html { render :edit }
         format.json { render json: @insurance.errors, status: :unprocessable_entity }
       end
     end
-end
-
- def create
-    @insurance = Insurance.new(insurance_params)
-	respond_to do |format|
-    if @insurance.save
-      # Handle a successful save.
-	    format.html { redirect_to @insurance, notice: 'Your Insurance was successfully added. '}
-        format.json { render :show, status: :ok, location: @insurance }
-    else
-		render :'new'
-    end
-	end
   end
-  
-	def update
-	
+
+  def destroy
+    @insurance.destroy
     respond_to do |format|
-      if @insurance.update(insurance_params)
-        format.html { redirect_to @insurance, notice: 'Your Insurance was successfully updated. ' + current_user.id.to_s }
-        format.json { render :show, status: :ok, location: @insurance }
-      else
-        format.html { render :'show' }
-        format.json { render json: @insurance.errors, status: :unprocessable_entity }
-      end
-    end
-	end
-	
-	def destroy 
-	@insurance.destroy
-    respond_to do |format|
-      format.html { render 'home/index', notice: 'Insurance was successfully Deleted.' }
+      format.html { redirect_to insurances_path, notice: 'Insurance was successfully Deleted.' }
       format.json { head :no_content }
     end
-	end
-	
-    private
+  end
 
-	def set_insurance
-     if user_signed_in?
-		@insurance = Insurance.find_by(user_id: current_user.id)
-		if (@insurance.nil?)
-			@insurance = Insurance.new
-			render :'new'
-		end
-	else
-		# Not sure if we need this one. Matt is a Noob.
-		render 'home/index'
-	end
- end
-	
-    def insurance_params
-      params.require(:insurance).permit(:first_name, :last_name, :enrolee_id,
-                                   :group_number, :user_id)
+  private
+
+    def set_insurance
+      @insurance = Insurance.find(params[:id])
     end
+
+    def insurance_params
+      params.require(:insurance).permit(:first_name, :last_name, :enrollee_id,
+       :group_number, :issue_date, :user_id)
+    end
+
 end

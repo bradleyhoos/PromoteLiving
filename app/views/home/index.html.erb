@@ -1,3 +1,15 @@
-<h1>You are logged in!</h1>
-<p> Oh this is just for show</p>
-
+<div class='container-fluid'>
+  <h1>You are logged in!</h1>
+  <p> Oh this is just for show</p>
+  <% if current_user.insurance.present? %>
+    <p>
+    <%= link_to "View My Insurance", insurance_path(current_user.insurance),
+     class: 'btn btn-primary' %>
+     </p>
+  <% else %>
+    <p>
+      <%= link_to 'Create Your Insurance Object', new_insurance_path,
+       class: 'btn btn-primary' %>
+      </p>
+  <% end %>
+</div>

@@ -12,6 +12,30 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*
-!/log/.keep
+/log/*.log
 /tmp
+/apidapter.log
+/tutorial
+coverage
+report.html
+robocop.html
+
+#ignore rubymine
+.idea
+
+#ignore sublime text project workspace
+.bundle\n
+.elasticbeanstalk/
+/nbproject/
+/doc/*.svg
+dawn.txt
+spec/fixtures/ephemeral_response/*.yml
+
+# Mac .DS_Store files
+*.DS_Store
+
+# Ignore application configuration??
+#config/initializers/secret_token.rb
+# Ignore application configuration
+/config/application.yml
+/config/database.yml

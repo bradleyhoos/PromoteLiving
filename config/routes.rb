@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-	get 'index' => 'home/index'
-	resources :insurances
-	devise_for :users, controllers: { sessions: "users/sessions" }
-	root to: 'home#index'
-  
-  end
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root to: 'home#index'
+  get 'index' => 'home/index'
+
+  resources :insurances
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+end

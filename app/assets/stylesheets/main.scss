@@ -1,0 +1,50 @@
+$navbar-inverse-bg: #27ae60;
+$navbar-inverse-link-color: white;
+$jumbotron-bg: #1abc9c;
+$container-width: 89%;
+$dark-grey: #4a4a4a;
+$pt5-ems: .5em;
+
+body {
+  height: 100%;
+  padding-top: 7.4em;
+  background-color: #f8f8f8;
+  overflow-x: hidden;
+  font-family: eurostile ,"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1.5em;
+}
+
+/*  Starting the icon section out of font awesome */
+.pl-handshake:before {
+  content:url "\img\hsa.png";
+}
+
+p.large {
+  font-size: 16px;
+}
+
+li.nav-email {
+  text-align: center;
+  padding-top: 1em;
+  color: #8EB4E3;
+}
+
+ul.dropdown-menu {
+  width: 189px;
+  left: -118px;
+}
+
+.dropdown li a {
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  white-space: nowrap;
+  padding: 7px 24.33333px;
+  text-align: left;
+  height: auto;
+  margin-right: $pt5-ems;
+}
+
+.form-control {
+  width: 100%;
+}

@@ -29,26 +29,12 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-class User < ActiveRecord::Base
-  rolify
-  has_paper_trail versions: :paper_trail_versions
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
-         :lockable, :timeoutable
+require 'factory_girl'
 
-  validates :password, presence: true, on: :create, length: { within: 6..40 }
-  validates :email, presence: true, uniqueness: true,
-            format: {
-              with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-            }
-  has_one :insurance, dependent: :destroy
-
-  # accepts_nested_attributes_for :insurance_policy
-
-  def insurance_policy
-    Insurance.find_by(user_id: self.id)
+FactoryGirl.define do
+  factory :user do
+    email 'malachai@shortjab.com'
+    password 'butteruppercuts2012'
+    password_confirmation 'butteruppercuts2012'
   end
-
 end

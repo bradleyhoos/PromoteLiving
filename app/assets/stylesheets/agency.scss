@@ -4,76 +4,71 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
- 
-body {
-	padding-top: 60px;
-    overflow-x: hidden;
-    font-family: eurostile ,"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-}
+// body {
+//   padding-top: 60px;
+//   overflow-x: hidden;
+//   font-family: eurostile ,"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+// }
 
-.logo{ 
+.logo{
 padding-bottom: 20px;
 height: 50px;
 }
 
 .circle{
- z-index: 100;
-    position: relative;
-    width: 125px;
-    height: 125px;
-    margin-left: 0;
-    border: 7px solid #f1f1f1;
-    border-radius: 15%;
-    text-align: center;
-    color: #fff;
-    background-color: #8EB4E3;
+  z-index: 100;
+  position: relative;
+  width: 125px;
+  height: 125px;
+  margin-left: 0;
+  border: 7px solid #f1f1f1;
+  border-radius: 15%;
+  text-align: center;
+  color: #fff;
+  background-color: #8EB4E3;
 }
 
 .text-shadow{
-text-shadow: 2px 2px #000000;
+  text-shadow: 2px 2px #000000;
 }
 
 .text-muted {
-    color: #0C182B;
+  color: #0C182B;
 }
 
 .text-primary {
-    color: #1FC249;
+  color: #1FC249;
 }
 
 .text-light-blue {
-    color: #8EB4E3;
+  color: #8EB4E3;
 }
 
 
 .text-light-green {
-    color: #1FC249;
+  color: #1FC249;
 }
 
 .text-dark-green{
-color:#1B6611;
+  color:#1B6611;
 }
 
 .text-white{
-color:#fff;
+  color:#fff;
 }
 
 p {
-    font-size: 14px;
-    line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.75;
 }
 
 /*  Starting the icon section out of font awesome */
 .pl-handshake:before {
   content:url "\img\hsa.png";
-  
 }
 
-
 p.large {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 a,
@@ -81,18 +76,18 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-    outline: 0;
+  outline: 0;
 }
 
 a {
-    color: #8EB4E3;
+  color: #8EB4E3;
 }
 
 a:hover,
 a:focus,
 a:active,
 a.active {
-    color: #fec503;
+  color: #fec503;
 }
 
 h1,
@@ -101,30 +96,30 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
-    font-family: "Arial Black", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Arial Black", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
 }
 
 .img-centered {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .bg-light-gray {
-    background-color: #f7f7f7;
+  background-color: #f7f7f7;
 }
 
 .bg-darkest-gray {
-    background-color: #222;
+  background-color: #222;
 }
 
 .btn-primary {
-    border-color: #8EB4E3;
-    text-transform: uppercase;
-    font-family: "Arial Black", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
-    color: #fff;
-    background-color: #8EB4E3;
+  border-color: #8EB4E3;
+  text-transform: uppercase;
+  font-family: "Arial Black", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  color: #fff;
+  background-color: #8EB4E3;
 }
 
 .btn-primary:hover,
@@ -132,15 +127,15 @@ h6 {
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-    border-color: #f6bf01;
-    color: #fff;
-    background-color: #fec503;
+  border-color: #f6bf01;
+  color: #fff;
+  background-color: #fec503;
 }
 
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-    background-image: none;
+  background-image: none;
 }
 
 .btn-primary.disabled,
@@ -158,26 +153,26 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: #8EB4E3;
-    background-color: #8EB4E3;
+  border-color: #8EB4E3;
+  background-color: #8EB4E3;
 }
 
 .btn-primary .badge {
-    color: #8EB4E3;
-    background-color: #fff;
+  color: #8EB4E3;
+  background-color: #fff;
 }
 
 .btn-xl {
-    padding: 20px 40px;
-    border-color: #fff;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-family: "Arial Black", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-	
-    color: #8EB4E3;
-    background-color: #0C182B;
+  padding: 20px 40px;
+  border-color: #fff;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-family: "Arial Black", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #8EB4E3;
+  background-color: #0C182B;
 }
 
 .btn-xl:hover,
@@ -185,16 +180,16 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl:active,
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
-    border-color: #fff;
-	
-    color: #1B6611;
-    background-color: #1FC249;
+  border-color: #fff;
+
+  color: #1B6611;
+  background-color: #1FC249;
 }
 
 .btn-xl:active,
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
-    background-image: none;
+  background-image: none;
 }
 
 .btn-xl.disabled,
@@ -212,31 +207,31 @@ fieldset[disabled] .btn-xl:active,
 .btn-xl.disabled.active,
 .btn-xl[disabled].active,
 fieldset[disabled] .btn-xl.active {
-    border-color: #8EB4E3;
-    background-color: #8EB4E3;
+  border-color: #8EB4E3;
+  background-color: #8EB4E3;
 }
 
 .btn-xl .badge {
-    color: #8EB4E3;
-    background-color: #fff;
+  color: #8EB4E3;
+  background-color: #fff;
 }
 
 .navbar-default {
-    border-color: transparent;
-    background-color: #1FC249;
+  border-color: transparent;
+  background-color: #1FC249;
 }
 
 .navbar-default .navbar-brand {
   /*   font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive; */
-    color: #fff;
-	text-shadow: 1px 1px #8EB4E3;
+  color: #fff;
+  text-shadow: 1px 1px #8EB4E3;
 }
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:active,
 .navbar-default .navbar-brand.active {
-    color: #fff;
+  color: #fff;
 }
 
 .navbar-default .navbar-collapse {
@@ -318,7 +313,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url(../img/healthy_cart.png);
+    // background-image: url(../img/healthy_cart.png);
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -404,9 +399,9 @@ section h3.section-subheading {
 .service-heading {
     margin: 15px 0;
     text-transform: none;
-	      text-transform: uppercase;
+        text-transform: uppercase;
         font-family: "Arial Black", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  
+
 }
 
 #portfolio .portfolio-item {
@@ -860,65 +855,65 @@ ul.social-buttons li a:active {
 }
 
 .portfolio-modal .modal-content img {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .portfolio-modal .close-modal {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 75px;
-    height: 75px;
-    background-color: transparent;
-    cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 75px;
+  height: 75px;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .portfolio-modal .close-modal:hover {
-    opacity: .3;
+  opacity: .3;
 }
 
 .portfolio-modal .close-modal .lr {
-    z-index: 1051;
-    width: 1px;
-    height: 75px;
-    margin-left: 35px;
-    background-color: #222;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+  z-index: 1051;
+  width: 1px;
+  height: 75px;
+  margin-left: 35px;
+  background-color: #222;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .portfolio-modal .close-modal .lr .rl {
-    z-index: 1052;
-    width: 1px;
-    height: 75px;
-    background-color: #222;
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+  z-index: 1052;
+  width: 1px;
+  height: 75px;
+  background-color: #222;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .portfolio-modal .modal-backdrop {
-    display: none;
-    opacity: 0;
+  display: none;
+  opacity: 0;
 }
 
 ::-moz-selection {
-    text-shadow: none;
-    background: #8EB4E3;
+  text-shadow: none;
+  background: #8EB4E3;
 }
 
 ::selection {
-    text-shadow: none;
-    background: #8EB4E3;
+  text-shadow: none;
+  background: #8EB4E3;
 }
 
 img::selection {
-    background: 0 0;
+  background: 0 0;
 }
 
 img::-moz-selection {
-    background: 0 0;
+  background: 0 0;
 }
 
 body {
