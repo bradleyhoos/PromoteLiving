@@ -5,6 +5,9 @@
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  first_name             :string
+#  last_name              :string
+#  preferred_name         :string
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -43,9 +46,18 @@ class User < ActiveRecord::Base
             format: {
               with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
             }
+  validates :first_name, presence: true, length: {maximum: 50, minimum: 2}
+  validates :last_name, presence: true, length: {maximum: 100, minimum: 2}
+
+  # has_one :account, dependent: :destroy
   has_one :insurance, dependent: :destroy
 
   # accepts_nested_attributes_for :insurance_policy
+
+  def full_name
+    return if first_name.nil? || last_name.nil?
+    first_name + " " + last_name
+  end
 
   def insurance_policy
     Insurance.find_by(user_id: self.id)

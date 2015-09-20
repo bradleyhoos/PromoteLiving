@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>PromoteLiving</title>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag 'dashboard', media: 'all' %>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <%= yield(:head) %>
@@ -16,9 +16,10 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
   <body class="<%= controller_name %> <%= action_name %> data-spy="scroll" " style>
     <%= render 'layouts/header' %>
-    <div class='container'>
+    <div class='container-fluid'>
       <div class='content'>
         <% flash.each do |name, msg| %>
           <% if msg.is_a?(String) %>
@@ -31,11 +32,9 @@
         <%= yield %>
       </div>
     </div>
-
   </body>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <%= javascript_include_tag :application %>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </html>

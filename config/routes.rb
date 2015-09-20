@@ -4,5 +4,20 @@ Rails.application.routes.draw do
   get 'index' => 'home/index'
 
   resources :insurances
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  resource :dashboard, only: [:index]
+  get 'dashboard(/:id)', controller: 'dashboard', to: 'dashboard#index', as: 'dashboard'
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
+  resource :users, only: [:edit] do
+    collection do
+      put 'update_password'
+    end
+  end
+
+  get '/:id', to: 'users#show', as: :user
 end

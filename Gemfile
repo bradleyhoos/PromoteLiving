@@ -25,8 +25,6 @@ gem 'rolify',               '~> 4.1.1'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sdoc',        group: :doc
 
-
-
 group :development do
   gem 'annotate',           '~> 2.6.10'
   gem 'web-console',        '~> 2.2.1'
@@ -39,6 +37,8 @@ group :test, :development do
   gem 'rubycritic',              require: false
   gem 'simplecov',               '~> 0.10.0', require: false
   gem 'brakeman',                '~> 3.0.5', require: false
+  gem 'faker',                   '~> 1.5.0'
+  gem 'letter_opener',           '~> 1.4.0'
   gem 'pry-rails',               '~> 0.3.4'
   gem 'pry-rescue',              '~> 1.4.2'
   gem 'binding_of_caller',       '~> 0.7.2'

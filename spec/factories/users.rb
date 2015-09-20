@@ -5,6 +5,9 @@
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  first_name             :string
+#  last_name              :string
+#  preferred_name         :string
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -33,6 +36,8 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :user do
+    first_name  { Faker::Name.first_name }
+    last_name   { Faker::Name.last_name }
     email 'malachai@shortjab.com'
     password 'butteruppercuts2012'
     password_confirmation 'butteruppercuts2012'

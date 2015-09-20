@@ -69,8 +69,7 @@ class InsurancesController < ApplicationController
     end
 
     def insurance_params
-      params.require(:insurance).permit(:first_name, :last_name, :enrollee_id,
-       :group_number, :issue_date, :user_id)
+      params.require(:insurance).permit(:enrollee_id, :group_number, :user_id)
     end
 
 end

@@ -4,11 +4,8 @@
 #
 #  id           :integer          not null, primary key
 #  user_id      :integer
-#  first_name   :string
-#  last_name    :string
 #  enrollee_id  :string
 #  group_number :string
-#  issue_date   :date
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
@@ -25,8 +22,6 @@ RSpec.describe Insurance, type: :model do
   }
 
   it { should belong_to(:user) }
-  it { should validate_presence_of(:first_name) }
-  it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:enrollee_id) }
   it { should validate_presence_of(:group_number) }
   it { should validate_presence_of(:user_id) }
@@ -64,38 +59,6 @@ RSpec.describe Insurance, type: :model do
 
     it "Group Number  should not be to long" do
       ins.group_number = "a" * 21
-      expect(ins).to_not be_valid
-    end
-  end
-
-  describe 'first_name & last_name' do
-    it "First name should be present" do
-      ins.first_name = "     "
-      expect(ins).to_not be_valid
-    end
-
-    it "First Name should be long enough" do
-      ins.first_name = "a"
-      expect(ins).to_not be_valid
-    end
-
-    it "First Name should not be to long" do
-      ins.first_name = "a" * 51
-      expect(ins).to_not be_valid
-    end
-
-    it "Last name should be present" do
-      ins.last_name = "     "
-      expect(ins).to_not be_valid
-    end
-
-    it "Last Name should be long enough" do
-      ins.last_name = "a"
-      expect(ins).to_not be_valid
-    end
-
-    it "Last Name should not be to long" do
-      ins.last_name = "a" * 101
       expect(ins).to_not be_valid
     end
   end

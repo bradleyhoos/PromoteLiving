@@ -25,7 +25,6 @@ robocop.html
 
 #ignore sublime text project workspace
 .bundle\n
-.elasticbeanstalk/
 /nbproject/
 /doc/*.svg
 dawn.txt
