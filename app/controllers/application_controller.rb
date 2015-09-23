@@ -26,9 +26,24 @@ class ApplicationController < ActionController::Base
     render text: "Promote Living Starter! Hey yo"
   end
 
+  def after_sign_in_path_for(resource)
+    (resource.insurance.present? ? dashboard_path : new_insurance_path) || root_path
+  end
+
+  def after_sign_up_path_for(resource)
+    (resource.insurance.present? ? dashboard_path : new_insurance_path) || root_path
+  end
+
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:first_name, :last_name, :email, :password,
+               :current_password, :password_confirmation, :preffered_name)
+    end
+    # devise_parameter_sanitizer.for(:account_update) do |u|
+    #   u.permit(:first_name, :last_name, :email, :password,
+    #            :current_password, :password_confirmation, :preffered_name)
+    # end
   end
 
 end

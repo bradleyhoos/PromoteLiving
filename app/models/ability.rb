@@ -8,7 +8,7 @@ class Ability
       can :access, :rails_admin   # grant access to rails_admin
       can :dashboard              # grant access to the dashboard
     else
-      can :manage, [User, Insurance]
+      can :manage, [User, Insurance, RewardsCard]
     end
   end
 end
