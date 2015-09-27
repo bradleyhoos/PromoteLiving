@@ -27,28 +27,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    (check_for_complete_account ? dashboard_path : new_insurance_path) || root_path
+    dashboard_path || root_path
+    # (check_for_complete_account ? dashboard_path : new_insurance_path) || root_path
   end
 
   def after_sign_up_path_for(resource)
-    (check_for_complete_account ? dashboard_path : new_insurance_path) || root_path
-  end
-
-  def check_for_complete_account
-    if resource.is_insured?
-      binding.pry
-      check_for_rewards_cards
-    else
-      format.html { redirect_to new_insurance_path, notice: 'Please add your insurance information.'}
-    end
-  end
-
-  def check_for_rewards_cards
-    if resource.rewards_cards.any?
-      redirect_to dashboard_path, notice: "Congratulations! You're ready to earn rewards for healthy purchases!"
-    else
-      format.html { redirect_to new_rewards_card_path, notice: 'Please add a rewards card.'}
-    end
+    dashboard_path || root_path
+    # (check_for_complete_account ? dashboard_path : new_insurance_path) || root_path
   end
 
   protected
