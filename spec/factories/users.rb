@@ -41,5 +41,6 @@ FactoryGirl.define do
     email 'malachai@shortjab.com'
     password 'butteruppercuts2012'
     password_confirmation 'butteruppercuts2012'
+    confirmed_at Date.today
   end
 end

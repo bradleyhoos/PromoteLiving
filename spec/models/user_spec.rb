@@ -47,6 +47,9 @@ RSpec.describe User, type: :model do
   it { should allow_value('bigballscaptain@testicles.me').for(:email) }
   it { should have_one(:insurance).dependent(:destroy) }
   # it { should have_one(:account).dependent(:destroy) }
+  #
+  it { should have_many(:rewards_cards).dependent(:delete_all) }
+  it { should have_one(:health_savings_account).dependent(:destroy) }
 
   it { should respond_to(:preferred_name) }
   it { should respond_to(:full_name) }

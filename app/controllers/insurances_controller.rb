@@ -33,7 +33,8 @@ class InsurancesController < ApplicationController
     @insurance = Insurance.new(insurance_params.merge!(user_id: current_user.id))
     respond_to do |format|
       if @insurance.save
-        format.html { redirect_to @insurance, notice: 'Your Insurance was successfully added. '}
+        # check_for_rewards_cards
+        format.html { redirect_to @insurance, notice: 'Your Insurance was successfully added.'}
         format.json { render json: @insurance, status: :created, location: @insurance }
       else
         format.html { render :new }

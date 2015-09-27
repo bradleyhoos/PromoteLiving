@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'index' => 'home/index'
 
-  resources :insurances
+  resources :insurances, :health_savings_accounts, :rewards_cards
 
   resource :dashboard, only: [:index]
   get 'dashboard(/:id)', controller: 'dashboard', to: 'dashboard#index', as: 'dashboard'

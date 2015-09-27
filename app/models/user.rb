@@ -51,6 +51,8 @@ class User < ActiveRecord::Base
 
   # has_one :account, dependent: :destroy
   has_one :insurance, dependent: :destroy
+  has_one :health_savings_account, dependent: :destroy
+  has_many :rewards_cards, dependent: :delete_all
 
   # accepts_nested_attributes_for :insurance_policy
 
@@ -61,6 +63,14 @@ class User < ActiveRecord::Base
 
   def insurance_policy
     Insurance.find_by(user_id: self.id)
+  end
+
+  def is_insured?
+    self.insurance.present?
+  end
+
+  def has_hsa?
+    self.health_savings_account.present?
   end
 
 end

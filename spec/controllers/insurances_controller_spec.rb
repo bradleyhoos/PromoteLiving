@@ -36,7 +36,7 @@ RSpec.describe InsurancesController, type: :controller do
     describe "GET edit" do
       it "assigns the requested insurance as @insurance_policy" do
         get :edit, {id: insurance_policy.to_param}
-        expect(assigns(:insurance)).to eq(@insurance_policy)
+        expect(assigns(:insurance)).to eq(insurance_policy)
       end
     end
 

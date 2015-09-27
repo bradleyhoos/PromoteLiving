@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923232005) do
+ActiveRecord::Schema.define(version: 20150927001333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "health_savings_accounts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "account_number"
+    t.string   "routing_number"
+    t.string   "account_name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "health_savings_accounts", ["account_number"], name: "index_health_savings_accounts_on_account_number", using: :btree
+  add_index "health_savings_accounts", ["user_id"], name: "index_health_savings_accounts_on_user_id", using: :btree
 
   create_table "insurances", force: :cascade do |t|
     t.integer  "user_id"
