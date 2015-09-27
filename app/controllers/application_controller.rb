@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   def check_for_complete_account
     if resource.is_insured?
-      # binding.pry
+      binding.pry
       check_for_rewards_cards
     else
       format.html { redirect_to new_insurance_path, notice: 'Please add your insurance information.'}

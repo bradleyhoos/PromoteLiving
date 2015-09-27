@@ -1,7 +1,7 @@
 # class Devise::SessionsController < DeviseController
 class Users::SessionsController < Devise::SessionsController
   prepend_before_filter :require_no_authentication, only: [ :new, :create ]
-  prepend_before_filter :check_for_insurance, only: [ :new, :create ]
+  prepend_before_filter :check_for_complete_account, only: [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, only: :create
   prepend_before_filter :verify_signed_out_user, only: :destroy
   prepend_before_filter only: [ :create, :destroy ] { request.env["devise.skip_timeout"] = true }
@@ -59,8 +59,28 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-    def check_for_insurance
-      if current_user.is_insured?
+    def check_for_complete_account
+      if user_signed_in?
+        binding.pry
+        if user.is_insured?
+          check_for_rewards_cards
+        else
+          redirect_to new_insurance_path, notice: 'Please add your insurance information.'
+        end
+
+        if user.has_hsa?
+          redirect_to dashboard_path, notice: "Congratulations! You're ready to earn rewards for healthy purchases!"
+        else
+          redirect_to new_health_savings_account_path, notice: 'Please add your insurance information.'
+        end
+      end
+    end
+
+    def check_for_rewards_cards
+      if user.has_rewards_cards?
+        redirect_to dashboard_path, notice: "Congratulations! You're ready to earn rewards for healthy purchases!"
+      else
+        redirect_to new_rewards_card_path, notice: 'Please add a rewards card.'
       end
     end
 

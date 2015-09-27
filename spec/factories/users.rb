@@ -38,7 +38,7 @@ FactoryGirl.define do
   factory :user do
     first_name  { Faker::Name.first_name }
     last_name   { Faker::Name.last_name }
-    email 'malachai@shortjab.com'
+    email       { Faker::Internet.email }
     password 'butteruppercuts2012'
     password_confirmation 'butteruppercuts2012'
     confirmed_at Date.today
