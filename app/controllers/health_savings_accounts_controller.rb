@@ -3,27 +3,26 @@ class HealthSavingsAccountsController < ApplicationController
   before_action :set_health_savings_account, only: [:show, :edit, :update, :destroy]
 
   def index
-    @health_savings_accounts = HealthSavingsAccount.all
+    @health_savings_accounts = current_user.health_savings_account
   end
 
   def show
   end
 
   def new
-    @health_savings_account = HealthSavingsAccount.new
+    @health_savings_account = HealthSavingsAccount.new#current_user.health_savings_account.new
   end
 
   def edit
   end
 
   def create
-    @health_savings_account = HealthSavingsAccount.new(health_savings_account_params)
+    @health_savings_account = current_user.build_health_savings_account(health_savings_account_params)
 
-    respond_to do |format|
-      if @health_savings_account.save
-        format.html { redirect_to @health_savings_account, notice: 'Health savings account was successfully created.' }
-        format.json { render :show, status: :created, location: @health_savings_account }
-      else
+    if @health_savings_account.save
+      check_for_complete_account
+    else
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @health_savings_account.errors, status: :unprocessable_entity }
       end
@@ -52,7 +51,7 @@ class HealthSavingsAccountsController < ApplicationController
 
   private
     def set_health_savings_account
-      @health_savings_account = HealthSavingsAccount.find(params[:id])
+      @health_savings_account = current_user.health_savings_account#.find(params[:id])
     end
 
     def health_savings_account_params

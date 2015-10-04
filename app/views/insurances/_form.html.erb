@@ -4,7 +4,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <% if action_name === "edit" %>
-      <i><%= @insurance.first_name %> <%= @insurance.last_name %></i> (<b><%= @insurance.last_name %></b>)
+      <i><%= @insurance.user.first_name %> <%= @insurance.user.last_name %></i> (<b><%= @insurance.user.last_name %></b>)
       <p class="pull-right"><%= link_to "Back to Insurance", edit_insurance_path(@insurance) %></p>
     <% else %>
       <i><b>Add your insurance</b></i>

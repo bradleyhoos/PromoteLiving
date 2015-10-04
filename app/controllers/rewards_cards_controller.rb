@@ -5,7 +5,7 @@ class RewardsCardsController < ApplicationController
   # GET /rewards_cards
   # GET /rewards_cards.json
   def index
-    @rewards_cards = RewardsCard.all
+    @rewards_cards = current_user.rewards_cards
   end
 
   # GET /rewards_cards/1
@@ -18,6 +18,11 @@ class RewardsCardsController < ApplicationController
     @rewards_card = RewardsCard.new
   end
 
+  # GET /rewards_card_chooser/new
+  def rewards_card_chooser
+    @rewards_cards = RewardsCard.all
+  end
+
   # GET /rewards_cards/1/edit
   def edit
   end
@@ -25,6 +30,8 @@ class RewardsCardsController < ApplicationController
   # POST /rewards_cards
   # POST /rewards_cards.json
   def create
+    # binding.pry
+
     @rewards_card = RewardsCard.new(rewards_card_params)
 
     respond_to do |format|

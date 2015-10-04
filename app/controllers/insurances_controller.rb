@@ -1,5 +1,6 @@
 class InsurancesController < ApplicationController
   before_filter :authenticate_user!
+  # before_action :check_for_complete_account, [:]
   before_action :set_insurance, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -31,21 +32,30 @@ class InsurancesController < ApplicationController
 
   def create
     @insurance = Insurance.new(insurance_params.merge!(user_id: current_user.id))
-    respond_to do |format|
-      if @insurance.save
-        # check_for_rewards_cards
-        format.html { redirect_to @insurance, notice: 'Your Insurance was successfully added.'}
-        format.json { render json: @insurance, status: :created, location: @insurance }
-      else
+    if @insurance.save
+      check_for_complete_account
+    else
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @insurance.errors, status: :unprocessable_entity }
       end
     end
+    # respond_to do |format|
+    #   if @insurance.save
+    #     check_for_complete_account
+    #     format.html { redirect_to @insurance, notice: 'Your Insurance was successfully added.'}
+    #     format.json { render json: @insurance, status: :created, location: @insurance }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @insurance.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def update
     respond_to do |format|
       if @insurance.update(insurance_params)
+        # check_for_complete_account
         format.html { redirect_to @insurance, notice: 'Your Insurance was successfully updated.' }
         format.json { head :no_content }
       else

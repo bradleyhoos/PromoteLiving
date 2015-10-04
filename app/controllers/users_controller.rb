@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   # layout 'dashboard'
 
   def show
-    if request.path != users_path(@user)
+    # if request.path != user_path(@user)
       redirect_to @user, status: :moved_permanently
-    end
+    # end
   end
 
   def edit

@@ -41,7 +41,7 @@ RSpec.describe HealthSavingsAccountsController, type: :controller do
     it "assigns all health_savings_accounts as @health_savings_accounts" do
       health_savings_account = HealthSavingsAccount.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:health_savings_accounts)).to eq([health_savings_account])
+      expect(assigns(:health_savings_accounts)).to eq(health_savings_account)
     end
   end
 
@@ -84,7 +84,11 @@ RSpec.describe HealthSavingsAccountsController, type: :controller do
 
       it "redirects to the created health_savings_account" do
         post :create, {:health_savings_account => valid_attributes}, valid_session
-        expect(response).to redirect_to(HealthSavingsAccount.last)
+        if user.is_insured?
+          expect(response).to redirect_to(HealthSavingsAccount.last)
+        else
+          expect(response).to redirect_to(new_insurance_path)
+        end
       end
     end
 

@@ -73,8 +73,16 @@ class User < ActiveRecord::Base
     self.health_savings_account.present?
   end
 
+  def hsa
+    self.health_savings_account
+  end
+
   def has_rewards_cards?
     self.rewards_cards.any?
+  end
+
+  def account_is_complete?
+    (is_insured? && has_hsa? && has_rewards_cards?)
   end
 
 end

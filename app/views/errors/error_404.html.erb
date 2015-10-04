@@ -1,0 +1,13 @@
+<% content_for :body_class, 'exception' %>
+<% content_for :title, title(@title.presence || "404: We're lost.") %>
+
+<h2><%= @description.presence || 'The page you were looking for cannot be found' %></h2>
+<h3>No need to worry, we are here to get you back on track!</h3>
+
+<ul>
+  <li>If you typed in the URL (does anyone do that these days?), check your spelling. Maybe it's a typo? Ok, didn't think so.</li>
+  <li>If you hit the back button in your browser and you are seeing this page, try going back one more time. Sometimes if you do something dramatic like place an order or update a credit card, you can only do it once so the back button doesn't work.</li>
+  <li>If you aren't sure what you are looking for, how about you visit our <%= link_to('home page', root_path) %>?</li>
+</ul>
+
+<p><strong><a href="<%= page_path('contact') %>">If something is broken, please let us know!</a></strong></p>

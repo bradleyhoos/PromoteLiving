@@ -1,7 +1,7 @@
 # class Devise::SessionsController < DeviseController
 class Users::SessionsController < Devise::SessionsController
   prepend_before_filter :require_no_authentication, only: [ :new, :create ]
-  prepend_before_filter :check_for_complete_account, only: [ :new, :create ]
+  # prepend_before_filter :check_for_complete_account, only: [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, only: :create
   prepend_before_filter :verify_signed_out_user, only: :destroy
   prepend_before_filter only: [ :create, :destroy ] { request.env["devise.skip_timeout"] = true }
@@ -9,6 +9,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
+    check_for_complete_account
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
     respond_with(resource, serialize_options(resource))
@@ -16,12 +17,16 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    response.headers['X-CSRF-Token'] = form_authenticity_token
-    self.resource = warden.authenticate!(auth_options)
-    set_flash_message(:notice, :signed_in) if is_flashing_format?
-    sign_in(resource_name, resource)
-    yield resource if block_given?
-    respond_with resource, location: after_sign_in_path_for(resource)
+    if !current_user.account_is_complete?
+      check_for_complete_account
+    else
+      response.headers['X-CSRF-Token'] = form_authenticity_token
+      self.resource = warden.authenticate!(auth_options)
+      set_flash_message(:notice, :signed_in) if is_flashing_format?
+      sign_in(resource_name, resource)
+      yield resource if block_given?
+      respond_with resource, location: after_sign_in_path_for(resource)
+    end
   end
 
   # DELETE /resource/sign_out
@@ -59,30 +64,29 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-    def check_for_complete_account
-      if user_signed_in?
-        binding.pry
-        if user.is_insured?
-          check_for_rewards_cards
-        else
-          redirect_to new_insurance_path, notice: 'Please add your insurance information.'
-        end
+    # def check_for_complete_account
+    #   if user_signed_in?
+    #     if current_user.is_insured?
+    #       check_for_rewards_cards
+    #     else
+    #       redirect_to new_insurance_path, notice: 'Please add your insurance information.' and return
+    #     end
 
-        if user.has_hsa?
-          redirect_to dashboard_path, notice: "Congratulations! You're ready to earn rewards for healthy purchases!"
-        else
-          redirect_to new_health_savings_account_path, notice: 'Please add your insurance information.'
-        end
-      end
-    end
+    #     if current_user.has_hsa?
+    #       redirect_to dashboard_path, notice: "Congratulations! You're ready to earn rewards for healthy purchases!" and return
+    #     else
+    #       redirect_to new_health_savings_account_path, notice: 'Please add your insurance information.' and return
+    #     end
+    #   end
+    # end
 
-    def check_for_rewards_cards
-      if user.has_rewards_cards?
-        redirect_to dashboard_path, notice: "Congratulations! You're ready to earn rewards for healthy purchases!"
-      else
-        redirect_to new_rewards_card_path, notice: 'Please add a rewards card.'
-      end
-    end
+    # def check_for_rewards_cards
+    #   if user.has_rewards_cards?
+    #     redirect_to dashboard_path, notice: "Congratulations! You're ready to earn rewards for healthy purchases!" and return
+    #   else
+    #     redirect_to new_rewards_card_path, notice: 'Please add a rewards card.' and return
+    #   end
+    # end
 
     # Check if there is no signed in user before doing the sign out.
     # If there is no signed in user, it will set the flash message and redirect
