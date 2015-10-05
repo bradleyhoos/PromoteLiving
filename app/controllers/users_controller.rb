@@ -1,13 +1,7 @@
 class UsersController < ApplicationController
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :get_user, only: [:edit, :update]
   before_action :authenticate_user!
-  # layout 'dashboard'
-
-  def show
-    # if request.path != user_path(@user)
-      redirect_to @user, status: :moved_permanently
-    # end
-  end
+  layout 'application'
 
   def edit
     render nothing: true
@@ -26,12 +20,13 @@ class UsersController < ApplicationController
   end
 
   private
+    def get_user
+      if @user.nil?
+        @user = current_user.nil? ? set_user : User.find(params[:user])
+      end
+    end
 
-  # def set_user
-  #   @user = User.find(params[:user])
-  # end
-
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :preferred_name, :remember_me, :id)
-  end
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :preferred_name, :remember_me, :id)
+    end
 end

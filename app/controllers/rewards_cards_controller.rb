@@ -18,9 +18,9 @@ class RewardsCardsController < ApplicationController
     @rewards_card = RewardsCard.new
   end
 
-  # GET /rewards_card_chooser/new
+  # GET rewards_cards/rewards_card_chooser
   def rewards_card_chooser
-    @rewards_cards = RewardsCard.all
+    @retailers = Retailer.all
   end
 
   # GET /rewards_cards/1/edit

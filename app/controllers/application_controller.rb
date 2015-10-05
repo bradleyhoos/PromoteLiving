@@ -40,13 +40,14 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_complete_account
-    # if user_signed_in?
+    if user_signed_in?
       if current_user.is_insured?
         check_for_hsa #check_for_rewards_cards
       else
         redirect_to new_insurance_path, notice: 'Please add your insurance information.' and return
       end
-    # end
+    end
+    root_path
   end
 
   def check_for_hsa

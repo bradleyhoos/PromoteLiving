@@ -1,0 +1,14 @@
+<div class='panel panel-primary'>
+  <div class='panel-heading'>
+    <i class='lead'>Link your Retailer Card</i>
+    <p class='pull-right'>Get dollars toward your healthcare</p>
+  </div>
+  <div class="panel panel-body">
+    <p id="notice"><%= notice %></p>
+      <ul>
+        <% @retailers.each do |retailer| %>
+          <li><%= retailer.name %><%#= link_to 'Show', retailer %></li>
+        <% end %>
+      </ul>
+  </div>
+</div>

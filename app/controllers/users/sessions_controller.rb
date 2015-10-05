@@ -12,6 +12,7 @@ class Users::SessionsController < Devise::SessionsController
     check_for_complete_account
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
+    yield resource if block_given?
     respond_with(resource, serialize_options(resource))
   end
 
@@ -60,6 +61,10 @@ class Users::SessionsController < Devise::SessionsController
 
     def auth_options
       { scope: resource_name, recall: "#{controller_path}#new" }
+    end
+
+    def translation_scope
+      'devise.sessions'
     end
 
   private

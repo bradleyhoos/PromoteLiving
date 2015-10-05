@@ -121,9 +121,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     after_sign_in_path_for(resource)
   end
 
-  # The path used after sign up for inactive accounts. You need to overwrite this method!
+  # The path used after sign up for inactive accounts. You need to overwrite
+  # this method in your own RegistrationsController.
   def after_inactive_sign_up_path_for(resource)
-    respond_to?(:root_path) ? root_path : "/"
+    scope = Devise::Mapping.find_scope!(resource)
+    router_name = Devise.mappings[scope].router_name
+    context = router_name ? send(router_name) : self
+    context.respond_to?(:root_path) ? context.root_path : "/"
   end
 
   # The default url to be used after updating a resource. You need to overwrite this method!
@@ -150,6 +154,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
      :first_name, :last_name, :preferred_name)
+  end
+
+  def translation_scope
+    'devise.registrations'
   end
 
   # https://github.com/plataformatec/devise/wiki/How-To%3a-Allow-users-to-edit-their-account-without-providing-a-password

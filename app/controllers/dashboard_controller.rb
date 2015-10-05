@@ -4,9 +4,6 @@ class DashboardController < ApplicationController
   layout 'dashboard'
 
   def index
-    # if Rails.env.production? || Rails.env.development?
-    #   @browser = Browser.new(ua: request.user_agent)
-    # end
     if @user
       # if request.path != dashboard_path(@dashboard)
       #   redirect_to @dashboard, status: :moved_permanently

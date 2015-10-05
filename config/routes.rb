@@ -8,16 +8,15 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'index' => 'home/index'
 
-  resources :insurances, :health_savings_accounts, :rewards_cards
-  resource :dashboard, only: [:index]
-
   resource :users, only: [:edit] do
     collection do
       put 'update_password'
     end
   end
 
-  get '/:id', to: 'users#show', as: :user
+  resources :insurances, :health_savings_accounts, :rewards_cards
+  resource :dashboard, only: [:index]
+
   get 'dashboard(/:id)', controller: 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get '/rewards_card_chooser', controller: 'rewards_cards', to: 'rewards_cards#rewards_card_chooser', as: 'rewards_card_chooser'
 
