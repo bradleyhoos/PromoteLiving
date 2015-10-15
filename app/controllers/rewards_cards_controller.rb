@@ -15,7 +15,9 @@ class RewardsCardsController < ApplicationController
 
   # GET /rewards_cards/new
   def new
-    @rewards_card = RewardsCard.new
+    find_retailer
+    @rewards_card = current_user.rewards_cards.new(retailer: @retailer)
+    #RewardsCard.new
   end
 
   # GET rewards_cards/rewards_card_chooser
@@ -30,9 +32,7 @@ class RewardsCardsController < ApplicationController
   # POST /rewards_cards
   # POST /rewards_cards.json
   def create
-    # binding.pry
-
-    @rewards_card = RewardsCard.new(rewards_card_params)
+    @rewards_card = current_user.rewards_cards.new(rewards_card_params)#RewardsCard.new(rewards_card_params)
 
     respond_to do |format|
       if @rewards_card.save
@@ -75,9 +75,14 @@ class RewardsCardsController < ApplicationController
       @rewards_card = RewardsCard.find(params[:id])
     end
 
+    def find_retailer
+      @retailer = Retailer.find(params['retailer'])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def rewards_card_params
-      params.require(:rewards_card).permit(:rewards_number, :retailer_id, :user_id)
+      params.require(:rewards_card).permit(:rewards_number, :retailer, :user_id,
+       :retailer_id)
       # user_id: integer, retailer_id: integer, rewards_number
       # params[:rewards_card]
     end

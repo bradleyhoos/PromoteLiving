@@ -1,4 +1,29 @@
 <p id="notice"><%= notice %></p>
 
+<div class="media" id='retailer-logo'>
+  <div class="media-left media-middle">
+    <a href="#">
+      <img class='media-object' src='http://placehold.it/350x350' alt='Large Retailer Card Logo'>
+    </a>
+  </div>
+  <div class='media-body'>
+    <h1 class='media-heading'>Congradulations!</h1>
+    <h2>You're all ready to earn rewards for healthy purchases!</h2>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Remind me how this works.</h4>
+        <p class="list-group-item-text">I need a little help here.</p>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Connect to my bank account now!</h4>
+        <p class="list-group-item-text">I'm ready to have dollars contributed to my HSA!</p>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
 <%= link_to 'Edit', edit_rewards_card_path(@rewards_card) %> |
 <%= link_to 'Back', rewards_cards_path %>
